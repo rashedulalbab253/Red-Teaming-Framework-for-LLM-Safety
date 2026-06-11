@@ -1,5 +1,8 @@
 # 🛡️ Red-Teaming Framework for LLM Safety
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/rashedulalbab253/Red-Teaming-Framework-for-LLM-Safety)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A systematic adversarial testing framework that probes LLM applications for **jailbreaks, bias, PII leakage, and toxic output generation** across 40+ vulnerability categories. It runs automated attacks, measures violation rates, applies safety hardening, and generates a comparative safety report documenting what was tested, what was found, and what was fixed.
 
 ## 🎯 What This Does
@@ -55,20 +58,27 @@ This framework implements the same red-teaming methodology used at **Meta (MART)
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/rashedulalbab253/Red-Teaming-Framework-for-LLM-Safety.git
+cd Red-Teaming-Framework-for-LLM-Safety
+```
+
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Configure Environment
+### 3. Configure Environment
 
 ```bash
 cp .env.example .env
 # Edit .env and add your OPENAI_API_KEY
 ```
 
-### 3. Run the Full Pipeline
+### 4. Run the Full Pipeline
 
 ```bash
 # Full pipeline (DeepTeam + AdvBench, baseline + hardened)
@@ -87,7 +97,7 @@ python run_pipeline.py --samples 100
 python run_pipeline.py --skip-baseline
 ```
 
-### 4. View the Report
+### 5. View the Report
 
 Results are saved to `results/`:
 - `safety_report_YYYYMMDD_HHMMSS.md` — The comprehensive safety report
@@ -95,6 +105,28 @@ Results are saved to `results/`:
 - `baseline_advbench.json` — Raw AdvBench baseline results
 - `hardened_deepteam.json` — Raw DeepTeam hardened scan results
 - `hardened_advbench.json` — Raw AdvBench hardened results
+
+## 📊 Evaluation & Verification Results
+
+Here are the results of our red-teaming assessment on `gpt-4o-mini` before and after applying safety prompt hardening (tested across 50 AdvBench direct probes):
+
+### Executive Summary
+
+| Metric | Baseline | Hardened | Change |
+|--------|----------|----------|--------|
+| **AdvBench Violation Rate** | 56.0% | 0.0% | **↓ 100.0%** |
+| **AdvBench Violations** | 28/50 | 0/50 | **-28** |
+| **AdvBench Refusals** | 22 | 50 | +28 |
+
+> **Key Finding:** Safety hardening reduced the AdvBench violation rate by **100.0%** (from 56.0% to 0.0%).
+
+### Performance Visualizations
+
+The pipeline automatically generates evaluation charts saved to the `results/` directory:
+
+| Overall Violation Rate Comparison | Category-level Violation Rates |
+|:---:|:---:|
+| ![Overall Comparison](results/overall_comparison_20260612_032748.png) | ![Category Comparison](results/category_comparison_20260612_032748.png) |
 
 ## 📁 Project Structure
 
