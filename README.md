@@ -126,7 +126,7 @@ The pipeline automatically generates evaluation charts saved to the `results/` d
 
 | Overall Violation Rate Comparison | Category-level Violation Rates |
 |:---:|:---:|
-| ![Overall Comparison](results/overall_comparison_20260612_032748.png) | ![Category Comparison](results/category_comparison_20260612_032748.png) |
+| ![Overall Comparison](assets/overall_comparison.png) | ![Category Comparison](assets/category_comparison.png) |
 
 ## 📁 Project Structure
 
